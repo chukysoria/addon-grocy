@@ -14,4 +14,4 @@ on:
 
 jobs:
   workflows:
-    uses: .github/workflows/addon-deploy.yaml
+    uses: ./.github/workflows/addon-deploy.yaml
