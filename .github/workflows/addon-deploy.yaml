@@ -163,6 +163,7 @@ jobs:
           load: true
           # yamllint disable rule:line-length
           tags: |
+            ghcr.io/${{ github.repository_owner }}/${{ needs.information.outputs.slug }}/${{ matrix.architecture }}:latest
             ghcr.io/${{ github.repository_owner }}/${{ needs.information.outputs.slug }}/${{ matrix.architecture }}:${{ needs.information.outputs.environment }}
             ghcr.io/${{ github.repository_owner }}/${{ needs.information.outputs.slug }}/${{ matrix.architecture }}:${{ needs.information.outputs.version }}
           # yamllint enable rule:line-length
@@ -208,6 +209,8 @@ jobs:
         if: ${{ github.event_name == 'release' }}
         # yamllint disable rule:line-length
         run: |
+          docker push \
+          "ghcr.io/${{ github.repository_owner }}/${{ needs.information.outputs.slug }}/${{ matrix.architecture }}:latest"
           docker push \
             "ghcr.io/${{ github.repository_owner }}/${{ needs.information.outputs.slug }}/${{ matrix.architecture }}:${{ needs.information.outputs.environment }}"
           docker push \
