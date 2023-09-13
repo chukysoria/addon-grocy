@@ -1,6 +1,6 @@
 ---
 name: Custom Grocy
-version: dev
+version: 0.0.2
 slug: grocy
 description: ERP beyond your fridge! A groceries & household management solution for your home
 url: https://github.com/chukysoria/addon-grocy
