@@ -6,6 +6,16 @@ concurrency:
 
 # yamllint disable-line rule:truthy
 on:
+  release:
+    types:
+      - published
+  push:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+
   workflow_call:
     inputs:
       slug:
@@ -195,6 +205,7 @@ jobs:
           rm -rf /tmp/.docker-cache
           mv /tmp/.docker-cache-new /tmp/.docker-cache
       - name: 🚀 Push
+        if: ${{ github.event_name == 'release' }}
         # yamllint disable rule:line-length
         run: |
           docker push \
